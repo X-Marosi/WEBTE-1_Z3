@@ -1,6 +1,7 @@
 # Assignment 3 - Graphs
 Create a web page with two pages that will display charts based on the following rules.The page must be fully responsive, including a menu (must contain some type of responsive menu - hamburger, drawer, . ..), content (must contain a title) and the article.In the first of the tables, the results that students have achieved in this subject during the last six academic years will be graphically displayed.   These achievements are available in the attached xmls file.  On page http://old.iolab.sk/evaluation/sse/sse.php
 
+# Part 1
 (1), compare the data from the last years using grouped vertical graphs in a single figure (an example is given in the figure).  It should be clear from the graphs what is shown, the axes must be clear and, for the bars, it must be obvious what they represent. 
 
 (2) also display the results from all school years in pie charts (each pie chart will represent one year and will be divided into sections corresponding to each individual year - e.g.  The year 2021/2022 and the percentage ratio for each individual country).  It should be clear from the graph which round, if any, corresponds to which year, and also, from the graph, which country takes up which percentage of the whole graph. 
@@ -9,9 +10,8 @@ Create a web page with two pages that will display charts based on the following
 
 (4) Contribute a mobile input (over 280px) - for vertical charts, the bars need to be changed to horizontal.  The individual graphs need to be arranged underneath each other.  All graphs (including your own, contribute so that they are given a number of counts on the mobile).
 Create charts using a popular JS library (e.g. Plotly - https://plotly.com/javascript/,Google Charts - https://developers.google.com/chart/, Apex Charts - https://apexcharts.com/,Charts.js - https://www.chartjs.org/, ...  ) 
-ㅤ
-ㅤ
-ㅤ
+
+#Part 2
 In the second step, the chart will be created based on the data generated on the page http://old.iolab.sk/evaluation/sse/sse.php
 
 (1) The data needs to be plotted sequentially on the chart until the user presses the "End" button on the page.  At this point it is necessary to display the graph in its entirety, i.e. from the beginning of its plotting to the end of its plotting.
@@ -27,10 +27,8 @@ In the second step, the chart will be created based on the data generated on the
 (6) Next to the figure, display the next 2 checkboxes, with which it will be possible to influence which graph should be displayed in the figure (first or second, both at the same time, neither).  
 
 (7) After the measurement in the figure is complete, you can also "zoom" parts of the graphs.
-ㅤ
-ㅤ
-ㅤ
-Note:
+
+#Notes:
 (1) CSS (e.g. Bootstrap) and JS libraries (e.g. jQuery) can be used.  You are not allowed to use jQuery UI.
 
 (2) Using Bootstrap, its derivatives, or any other graphical framework to create a responsive design, including menus, is allowed.
