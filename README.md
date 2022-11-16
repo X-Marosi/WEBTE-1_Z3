@@ -9,9 +9,9 @@ Create a web page with two pages that will display charts based on the following
 
 (4) Contribute a mobile input (over 280px) - for vertical charts, the bars need to be changed to horizontal.  The individual graphs need to be arranged underneath each other.  All graphs (including your own, contribute so that they are given a number of counts on the mobile).
 Create charts using a popular JS library (e.g. Plotly - https://plotly.com/javascript/,Google Charts - https://developers.google.com/chart/, Apex Charts - https://apexcharts.com/,Charts.js - https://www.chartjs.org/, ...  ) 
-
-
-
+ㅤ
+ㅤ
+ㅤ
 In the second step, the chart will be created based on the data generated on the page http://old.iolab.sk/evaluation/sse/sse.php
 
 (1) The data needs to be plotted sequentially on the chart until the user presses the "End" button on the page.  At this point it is necessary to display the graph in its entirety, i.e. from the beginning of its plotting to the end of its plotting.
@@ -27,9 +27,9 @@ In the second step, the chart will be created based on the data generated on the
 (6) Next to the figure, display the next 2 checkboxes, with which it will be possible to influence which graph should be displayed in the figure (first or second, both at the same time, neither).  
 
 (7) After the measurement in the figure is complete, you can also "zoom" parts of the graphs.
-
-
-
+ㅤ
+ㅤ
+ㅤ
 Note:
 (1) CSS (e.g. Bootstrap) and JS libraries (e.g. jQuery) can be used.  You are not allowed to use jQuery UI.
 
