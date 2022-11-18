@@ -1,12 +1,274 @@
 <!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Z3</title>
-</head>
-<body>
 
-</body>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link rel="stylesheet"  type="text/css" href="css/bootstrap.min.css">
+        <script type="text/javascript" src="js/bootstrap.bundle.min.js" defer></script>
+        <script type="text/javascript" src="my_js.js" defer></script>
+
+        <script src="https://cdn.plot.ly/plotly-2.16.1.min.js"></script>
+        <link type="text/xml" href="z03.xml">
+        <title>Graphs</title>
+    </head>
+    <body>
+        <nav class="navbar navbar-dark navbar-expand-sm navbar-light bg-dark">
+            <a class="navbar-brand " href="#" style="padding: 10px;">Assignment 3</a>
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a href="#" class="nav-link active">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="graph.html" class="nav-link">Graphs</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="draw.html" class="nav-link">Draw</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+
+        <div class="container" id="barGraph" style="width:1000px;height:500px;"></div>
+
+        <div class="container">
+            <div class="row">
+                <div class="" id="pieOne" style="width: 33%"></div>
+                <div class="" id="pieTwo" style="width: 33%"></div>
+                <div class="" id="pieThree" style="width: 33%"></div>
+            </div>
+            <div class="row">
+                <div class="" id="pieFour" style="width: 33%"></div>
+                <div class="" id="pieFive" style="width: 33%"></div>
+                <div class="" id="pieSix" style="width: 33%"></div>
+            </div>
+        </div>
+
+
+        <script defer>
+
+            let gradeListA = []
+            let gradeListB = []
+            let gradeListC = []
+            let gradeListD = []
+            let gradeListE = []
+            let gradeListFX = []
+            let gradeListFN = []
+
+            fetch("z03.xml")
+                .then(res => res.text())
+                .then(data => {
+
+                    const parser = new DOMParser();
+                    const xml = parser.parseFromString(data, "text/xml");
+                    const A = xml.getElementsByTagName("A");
+                    const B = xml.getElementsByTagName("B");
+                    const C = xml.getElementsByTagName("C");
+                    const D = xml.getElementsByTagName("D");
+                    const E = xml.getElementsByTagName("E");
+                    const FX = xml.getElementsByTagName("FX");
+                    const FN = xml.getElementsByTagName("FN");
+
+                    for (const aKey in A) {
+                        gradeListA.push(A[aKey].innerHTML);
+                    }
+                    for (const aKey in B) {
+                        gradeListB.push(B[aKey].innerHTML);
+                    }
+                    for (const aKey in C) {
+                        gradeListC.push(C[aKey].innerHTML);
+                    }
+                    for (const aKey in D) {
+                        gradeListD.push(D[aKey].innerHTML);
+                    }
+                    for (const aKey in E) {
+                        gradeListE.push(E[aKey].innerHTML);
+                    }
+                    for (const aKey in FX) {
+                        gradeListFX.push(FX[aKey].innerHTML);
+                    }
+                    for (const aKey in FN) {
+                        gradeListFN.push(FN[aKey].innerHTML);
+                    }
+
+                    let data2 = [
+                        {
+                            x: ["2021/22","2021/20","2020/19","2019/18","2018/17","2017/16"],
+                            y: gradeListA,
+                            type: 'bar',
+                            name: 'A',
+                            marker:{
+                                color: 'rgb(38,70,83)'
+
+                            }
+                        },
+                        {
+                            x: ["2021/22","2021/20","2020/19","2019/18","2018/17","2017/16"],
+                            y: gradeListB,
+                            type: 'bar',
+                            name: 'B',
+                            marker:{
+                                color: 'rgb(42,157,143)'
+                            }
+                        },
+                        {
+                            x: ["2021/22","2021/20","2020/19","2019/18","2018/17","2017/16"],
+                            y: gradeListC,
+                            type: 'bar',
+                            name: 'C',
+                            marker:{
+                                color: 'rgb(233,196,106)'
+                            }
+                        },
+                        {
+                            x: ["2021/22","2021/20","2020/19","2019/18","2018/17","2017/16"],
+                            y: gradeListD,
+                            type: 'bar',
+                            name: 'D',
+                            marker:{
+                                color: 'rgb(244,162,97)'
+                            }
+                        },
+                        {
+                            x: ["2021/22","2021/20","2020/19","2019/18","2018/17","2017/16"],
+                            y: gradeListE,
+                            type: 'bar',
+                            name: 'E',
+                            marker:{
+                                color: 'rgb(244,162,97)'
+                            }
+                        },
+                        {
+                            x: ["2021/22","2021/20","2020/19","2019/18","2018/17","2017/16"],
+                            y: gradeListFX,
+                            type: 'bar',
+                            name: 'FX',
+                            marker:{
+                                color: 'rgb(238,137,89)'
+                            }
+                        },
+                        {
+                            x: ["2021/22","2021/20","2020/19","2019/18","2018/17","2017/16"],
+                            y: gradeListFN,
+                            type: 'bar',
+                            name: 'FN',
+                            marker:{
+                                color: 'rgb(231,111,81)'
+                            }
+                        }];
+
+                    let data3 = [{
+                        values: [gradeListA[0], gradeListB[0], gradeListC[0], gradeListD[0], gradeListE[0], gradeListFX[0], gradeListFN[0]],
+                        labels: ['A', 'B', 'C', 'D', 'E', 'FX', 'FN'],
+                        type: 'pie',
+                        textinfo: "label+percent",
+                        marker:{
+                            colors: ['rgb(204,238,222)',
+                                     'rgb(179,232,220)',
+                                     'rgb(153,225,217)',
+                                     'rgb(90,190,194)',
+                                     'rgb(59,172,182)',
+                                     'rgb(27,154,170)',
+                                     'rgb(47,143,157)']
+                        }
+                    }];
+                    let data4 = [{
+                        values: [gradeListA[1], gradeListB[1], gradeListC[1], gradeListD[1], gradeListE[1], gradeListFX[1], gradeListFN[1]],
+                        labels: ['A', 'B', 'C', 'D', 'E', 'FX', 'FN'],
+                        type: 'pie',
+                        textinfo: "label+percent",
+                        marker:{
+                            colors: ['rgb(239,116,92)',
+                                     'rgb(208,98,87)',
+                                     'rgb(177,80,82)',
+                                     'rgb(146,62,77)',
+                                     'rgb(114,43,71)',
+                                     'rgb(83,25,66)',
+                                     'rgb(52,7,61)']
+                        }
+                    }];
+                    let data5 = [{
+                        values: [gradeListA[2], gradeListB[2], gradeListC[2], gradeListD[2], gradeListE[2], gradeListFX[2], gradeListFN[2]],
+                        labels: ['A', 'B', 'C', 'D', 'E', 'FX', 'FN'],
+                        type: 'pie',
+                        textinfo: "label+percent",
+                        marker:{
+                            colors: ['rgb(168,116,210)',
+                                     'rgb(236,224,245)',
+                                     'rgb(216,193,235)',
+                                     'rgb(197,163,225)',
+                                     'rgb(149,86,200)',
+                                     'rgb(129,60,185)',
+                                     'rgb(101,47,144)']
+                        }
+                    }];
+                    let data6 = [{
+                        values: [gradeListA[3], gradeListB[3], gradeListC[3], gradeListD[3], gradeListE[3], gradeListFX[3], gradeListFN[3]],
+                        labels: ['A', 'B', 'C', 'D', 'E', 'FX', 'FN'],
+                        type: 'pie',
+                        textinfo: "label+percent",
+                        marker: {
+                            colors: ['rgb(255,215,138)',
+                                     'rgb(253,199,123)',
+                                     'rgb(251,183,107)',
+                                     'rgb(248,150,76)',
+                                     'rgb(244,118,45)',
+                                     'rgb(250,167,92)',
+                                     'rgb(246,134,61)',]
+                        }
+                    }];
+                    let data7 = [{
+                        values: [gradeListA[4], gradeListB[4], gradeListC[4], gradeListD[4], gradeListE[4], gradeListFX[4], gradeListFN[4]],
+                        labels: ['A', 'B', 'C', 'D', 'E', 'FX', 'FN'],
+                        type: 'pie',
+                        textinfo: "label+percent",
+                        marker:{
+                            colors: ['rgb(166,224,72)',
+                                     'rgb(150,222,90)',
+                                     'rgb(193,236,65)',
+                                     'rgb(241,236,77)',
+                                     'rgb(246,222,46)',
+                                     'rgb(239,202,64)',
+                                     'rgb(239,173,75)']
+                        }
+                    }];
+                    let data8 = [{
+                        values: [gradeListA[5], gradeListB[5], gradeListC[5], gradeListD[5], gradeListE[5], gradeListFX[5], gradeListFN[5]],
+                        labels: ['A', 'B', 'C', 'D', 'E', 'FX', 'FN'],
+                        type: 'pie',
+                        textinfo: "label+percent",
+                        marker:{
+                            colors: ['rgb(42,104,88)',
+                                     'rgb(78,164,135)',
+                                     'rgb(63,138,114)',
+                                     'rgb(53,121,101)',
+                                     'rgb(21,69,62)',
+                                     'rgb(31,86,75)',
+                                     'rgb(10,52,49)']
+                        }
+                    }];
+
+                    let pieLayout = {
+                        legend: {
+                            y: 1.1
+                        }
+                    }
+
+
+
+                    Plotly.newPlot('barGraph', data2,{responsive:true});
+                    Plotly.newPlot('pieOne', data3, pieLayout);
+                    Plotly.newPlot('pieTwo', data4, pieLayout);
+                    Plotly.newPlot('pieThree', data5, pieLayout);
+                    Plotly.newPlot('pieFour', data6, pieLayout);
+                    Plotly.newPlot('pieFive', data7, pieLayout);
+                    Plotly.newPlot('pieSix', data8, pieLayout);
+                })
+        </script>
+
+    </body>
 </html>
