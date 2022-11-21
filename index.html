@@ -160,6 +160,79 @@
                             }
                         }];
 
+                    let dataH = [
+                        {
+                            y: ["2021/22","2020/21","2019/20","2018/11","2017/18","2016/17"],
+                            x: gradeListA,
+                            type: 'bar',
+                            name: 'A',
+                            orientation: 'h',
+                            marker:{
+                                color: 'rgb(38,70,83)'
+
+                            }
+                        },
+                        {
+                            y: ["2021/22","2020/21","2019/20","2018/11","2017/18","2016/17"],
+                            x: gradeListB,
+                            type: 'bar',
+                            name: 'B',
+                            orientation: 'h',
+                            marker:{
+                                color: 'rgb(42,157,143)'
+                            }
+                        },
+                        {
+                            y: ["2021/22","2020/21","2019/20","2018/11","2017/18","2016/17"],
+                            x: gradeListC,
+                            type: 'bar',
+                            name: 'C',
+                            orientation: 'h',
+                            marker:{
+                                color: 'rgb(233,196,106)'
+                            }
+                        },
+                        {
+                            y: ["2021/22","2020/21","2019/20","2018/11","2017/18","2016/17"],
+                            x: gradeListD,
+                            type: 'bar',
+                            name: 'D',
+                            orientation: 'h',
+                            marker:{
+                                color: 'rgb(244,162,97)'
+                            }
+                        },
+                        {
+                            y: ["2021/22","2020/21","2019/20","2018/11","2017/18","2016/17"],
+                            x: gradeListE,
+                            type: 'bar',
+                            name: 'E',
+                            orientation: 'h',
+                            marker:{
+                                color: 'rgb(244,162,97)'
+                            }
+                        },
+                        {
+                            y: ["2021/22","2020/21","2019/20","2018/11","2017/18","2016/17"],
+                            x: gradeListFX,
+                            type: 'bar',
+                            name: 'FX',
+                            orientation: 'h',
+                            marker:{
+                                color: 'rgb(238,137,89)'
+                            }
+                        },
+                        {
+                            y: ["2021/22","2020/21","2019/20","2018/11","2017/18","2016/17"],
+                            x: gradeListFN,
+                            type: 'bar',
+                            name: 'FN',
+                            orientation: 'h',
+                            marker:{
+                                color: 'rgb(231,111,81)'
+                            }
+                        }];
+
                     let data3 = [{
                         values: [gradeListA[0], gradeListB[0], gradeListC[0], gradeListD[0], gradeListE[0], gradeListFX[0], gradeListFN[0]],
                         labels: ['A', 'B', 'C', 'D', 'E', 'FX', 'FN'],
@@ -284,7 +357,7 @@
                         values: [sumA, sumB, sumC, sumD, sumE, sumFX, sumFN],
                         labels: ['A', 'B', 'C', 'D', 'E', 'FX', 'FN'],
                         domain: {column: 0},
-                        name: 'GHG Emissions',
+                        name: '',
                         hoverinfo: 'label+percent+name',
                         textinfo: "label+percent",
                         hole: .4,
@@ -301,7 +374,7 @@
                     }];
 
 
-                    Plotly.newPlot('barGraph', data2,{},{responsive:true});
+                    Plotly.newPlot('barGraph', data2,{},{responsive:true, height: 500});
                     Plotly.newPlot('pieOne', data3, {showlegend: false, title: {text: "2021/22"}},{responsive:true});
                     Plotly.newPlot('pieTwo', data4, {showlegend: false, title: {text: "2020/21"}},{responsive:true});
                     Plotly.newPlot('pieThree', data5, {showlegend: false, title: {text: "2019/20"}},{responsive:true});
@@ -310,40 +383,13 @@
                     Plotly.newPlot('pieSix', data8, {showlegend: false, title: {text: "2016/17"}},{responsive:true});
                     Plotly.newPlot('donutGraph', data9, {showlegend: false, title: {text: "All Years"}},{responsive:true});
 
+
                     window.addEventListener("resize", () => {
-                        if (window.innerWidth < 800) {
-                            document.getElementById("barGraph").style.transform = "rotate(90deg)";
-                            document.getElementById("barGraph").style.height = (window.innerWidth - 20) + "px";
-
-                            Plotly.relayout('barGraph', {
-                                xaxis: {
-                                    tickangle: 270
-                                },
-                                yaxis: {
-                                    tickangle: 270
-                                },
-
-                                showlegend: false
-
-
-                            }, {responsive:false});
-
+                        if (window.innerWidth < 600) {
+                            Plotly.react('barGraph', dataH, {legend: {"orientation": "h"}, height: 1000,  yaxis: {tickangle: 0}});
 
                         } else {
-                            document.getElementById("barGraph").style.transform = "rotate(0deg)";
-                            Plotly.relayout('barGraph', {
-                                xaxis: {
-                                    tickangle: 0
-                                },
-                                yaxis: {
-                                    tickangle: 0
-                                },
-
-                                showlegend: true
-
-
-                            }, {responsive:true});
-
+                            Plotly.react('barGraph', data2, {height: 500});
                         }
                     });
                 })
