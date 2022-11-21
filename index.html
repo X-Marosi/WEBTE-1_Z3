@@ -20,10 +20,7 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a href="#" class="nav-link active">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="graph.html" class="nav-link">Graphs</a>
+                        <a href="#" class="nav-link active">Graph</a>
                     </li>
                     <li class="nav-item">
                         <a href="draw.html" class="nav-link">Draw</a>
@@ -32,24 +29,26 @@
             </div>
         </nav>
 
-
-        <div class="container" id="barGraph" style="width:1000px;height:500px;"></div>
+        <div class="container" id="barGraph"></div>
 
         <div class="container">
             <div class="row">
-                <div class="" id="pieOne" style="width: 33%"></div>
-                <div class="" id="pieTwo" style="width: 33%"></div>
-                <div class="" id="pieThree" style="width: 33%"></div>
+                <div class="col-lg-4 " id="pieOne"></div>
+                <div class="col-lg-4 " id="pieTwo"></div>
+                <div class="col-lg-4 " id="pieThree" ></div>
             </div>
             <div class="row">
-                <div class="" id="pieFour" style="width: 33%"></div>
-                <div class="" id="pieFive" style="width: 33%"></div>
-                <div class="" id="pieSix" style="width: 33%"></div>
+                <div class="col-lg-4" id="pieFour"></div>
+                <div class="col-lg-4" id="pieFive"></div>
+                <div class="col-lg-4" id="pieSix"></div>
             </div>
+
+
         </div>
 
+        <div id="donutGraph"></div>
 
-        <script defer>
+        <script>
 
             let gradeListA = []
             let gradeListB = []
@@ -97,7 +96,7 @@
 
                     let data2 = [
                         {
-                            x: ["2021/22","2021/20","2020/19","2019/18","2018/17","2017/16"],
+                            x: ["2021/22","2020/21","2019/20","2018/11","2017/18","2016/17"],
                             y: gradeListA,
                             type: 'bar',
                             name: 'A',
@@ -107,7 +106,7 @@
                             }
                         },
                         {
-                            x: ["2021/22","2021/20","2020/19","2019/18","2018/17","2017/16"],
+                            x: ["2021/22","2020/21","2019/20","2018/11","2017/18","2016/17"],
                             y: gradeListB,
                             type: 'bar',
                             name: 'B',
@@ -116,7 +115,7 @@
                             }
                         },
                         {
-                            x: ["2021/22","2021/20","2020/19","2019/18","2018/17","2017/16"],
+                            x: ["2021/22","2020/21","2019/20","2018/11","2017/18","2016/17"],
                             y: gradeListC,
                             type: 'bar',
                             name: 'C',
@@ -125,7 +124,7 @@
                             }
                         },
                         {
-                            x: ["2021/22","2021/20","2020/19","2019/18","2018/17","2017/16"],
+                            x: ["2021/22","2020/21","2019/20","2018/11","2017/18","2016/17"],
                             y: gradeListD,
                             type: 'bar',
                             name: 'D',
@@ -134,7 +133,7 @@
                             }
                         },
                         {
-                            x: ["2021/22","2021/20","2020/19","2019/18","2018/17","2017/16"],
+                            x: ["2021/22","2020/21","2019/20","2018/11","2017/18","2016/17"],
                             y: gradeListE,
                             type: 'bar',
                             name: 'E',
@@ -143,7 +142,7 @@
                             }
                         },
                         {
-                            x: ["2021/22","2021/20","2020/19","2019/18","2018/17","2017/16"],
+                            x: ["2021/22","2020/21","2019/20","2018/11","2017/18","2016/17"],
                             y: gradeListFX,
                             type: 'bar',
                             name: 'FX',
@@ -152,7 +151,7 @@
                             }
                         },
                         {
-                            x: ["2021/22","2021/20","2020/19","2019/18","2018/17","2017/16"],
+                            x: ["2021/22","2020/21","2019/20","2018/11","2017/18","2016/17"],
                             y: gradeListFN,
                             type: 'bar',
                             name: 'FN',
@@ -259,14 +258,94 @@
                     }
 
 
+                    let sumA = 0;
+                    let sumB = 0;
+                    let sumC = 0;
+                    let sumD = 0;
+                    let sumE = 0;
+                    let sumFX = 0;
+                    let sumFN = 0;
 
-                    Plotly.newPlot('barGraph', data2,{responsive:true});
-                    Plotly.newPlot('pieOne', data3, pieLayout);
-                    Plotly.newPlot('pieTwo', data4, pieLayout);
-                    Plotly.newPlot('pieThree', data5, pieLayout);
-                    Plotly.newPlot('pieFour', data6, pieLayout);
-                    Plotly.newPlot('pieFive', data7, pieLayout);
-                    Plotly.newPlot('pieSix', data8, pieLayout);
+
+                    for (let i = 0; i < 6; i++) {
+                        sumA += parseInt(gradeListA[i]);
+                        sumB += parseInt(gradeListB[i]);
+                        sumC += parseInt(gradeListC[i]);
+                        sumD += parseInt(gradeListD[i]);
+                        sumE += parseInt(gradeListE[i]);
+                        sumFX += parseInt(gradeListFX[i]);
+                        sumFN += parseInt(gradeListFN[i]);
+                    }
+
+
+
+
+                    var data9 = [{
+                        values: [sumA, sumB, sumC, sumD, sumE, sumFX, sumFN],
+                        labels: ['A', 'B', 'C', 'D', 'E', 'FX', 'FN'],
+                        domain: {column: 0},
+                        name: 'GHG Emissions',
+                        hoverinfo: 'label+percent+name',
+                        textinfo: "label+percent",
+                        hole: .4,
+                        type: 'pie',
+                        marker:{
+                            colors: ['rgb(56,102,65)',
+                                'rgb(106,153,78)',
+                                'rgb(167,201,87)',
+                                'rgb(242,232,207)',
+                                'rgb(188,71,73)',
+                                'rgb(219,80,74)',
+                                'rgb(255,111,89)']
+                        }
+                    }];
+
+
+                    Plotly.newPlot('barGraph', data2,{},{responsive:true});
+                    Plotly.newPlot('pieOne', data3, {showlegend: false, title: {text: "2021/22"}},{responsive:true});
+                    Plotly.newPlot('pieTwo', data4, {showlegend: false, title: {text: "2020/21"}},{responsive:true});
+                    Plotly.newPlot('pieThree', data5, {showlegend: false, title: {text: "2019/20"}},{responsive:true});
+                    Plotly.newPlot('pieFour', data6, {showlegend: false, title: {text: "2018/19"}},{responsive:true});
+                    Plotly.newPlot('pieFive', data7, {showlegend: false, title: {text: "2017/18"}},{responsive:true});
+                    Plotly.newPlot('pieSix', data8, {showlegend: false, title: {text: "2016/17"}},{responsive:true});
+                    Plotly.newPlot('donutGraph', data9, {showlegend: false, title: {text: "All Years"}},{responsive:true});
+
+                    window.addEventListener("resize", () => {
+                        if (window.innerWidth < 800) {
+                            document.getElementById("barGraph").style.transform = "rotate(90deg)";
+                            document.getElementById("barGraph").style.height = (window.innerWidth - 20) + "px";
+
+                            Plotly.relayout('barGraph', {
+                                xaxis: {
+                                    tickangle: 270
+                                },
+                                yaxis: {
+                                    tickangle: 270
+                                },
+
+                                showlegend: false
+
+
+                            }, {responsive:false});
+
+
+                        } else {
+                            document.getElementById("barGraph").style.transform = "rotate(0deg)";
+                            Plotly.relayout('barGraph', {
+                                xaxis: {
+                                    tickangle: 0
+                                },
+                                yaxis: {
+                                    tickangle: 0
+                                },
+
+                                showlegend: true
+
+
+                            }, {responsive:true});
+
+                        }
+                    });
                 })
         </script>
 

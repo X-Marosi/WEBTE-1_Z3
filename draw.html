@@ -16,10 +16,7 @@
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
           <li class="nav-item">
-            <a href="index.html" class="nav-link">Home</a>
-          </li>
-          <li class="nav-item">
-            <a href="graph.html" class="nav-link">Graphs</a>
+            <a href="index.html" class="nav-link">Graph</a>
           </li>
           <li class="nav-item">
             <a href="#" class="nav-link active">Draw</a>
@@ -27,6 +24,42 @@
         </ul>
       </div>
     </nav>
+
+
+
+
+    <div class="container">
+      <div class="row">
+        <div class="col-2">
+          <div class="form-group">
+            <label for="number">Amplitude</label>
+            <input type="number" class="form-control" id="number" min="0" max="100" value="50">
+            </div>
+        </div>
+      </div>
+        <div class="row">
+            <div class="col-2">
+                <div class="form-group">
+                    <label for="slider"></label>
+                    <input type="range" class="form-control-range" id="slider" min="0" max="100" value="50">
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <script>
+      let slider = document.getElementById("slider");
+      let number = document.getElementById("number");
+      slider.oninput = function() {
+        number.value = this.value;
+      }
+      number.oninput = function() {
+        slider.value = this.value;
+      }
+    </script>
+
 
   </body>
 </html>
