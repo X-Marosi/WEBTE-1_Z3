@@ -7,7 +7,7 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <link rel="stylesheet"  type="text/css" href="css/bootstrap.min.css">
         <script type="text/javascript" src="js/bootstrap.bundle.min.js" defer></script>
-        <script type="text/javascript" src="my_js.js" defer></script>
+        <script type="text/javascript" src="js/draw.js" defer></script>
 
         <script src="https://cdn.plot.ly/plotly-2.16.1.min.js"></script>
         <link type="text/xml" href="z03.xml">
@@ -324,13 +324,6 @@
                         }
                     }];
 
-                    let pieLayout = {
-                        legend: {
-                            y: 1.1
-                        }
-                    }
-
-
                     let sumA = 0;
                     let sumB = 0;
                     let sumC = 0;
@@ -353,7 +346,7 @@
 
 
 
-                    var data9 = [{
+                    let data9 = [{
                         values: [sumA, sumB, sumC, sumD, sumE, sumFX, sumFN],
                         labels: ['A', 'B', 'C', 'D', 'E', 'FX', 'FN'],
                         domain: {column: 0},

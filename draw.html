@@ -2,13 +2,16 @@
 <html lang="en">
   <head>
       <meta charset="UTF-8">
-      <meta name="viewport"
-            content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+      <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
       <meta http-equiv="X-UA-Compatible" content="ie=edge">
       <link rel="stylesheet"  type="text/css" href="css/bootstrap.min.css">
       <script type="text/javascript" src="js/bootstrap.bundle.min.js" defer></script>
+      <script defer src="js/draw.js"></script>
+      <script defer src="js/slider.js"></script>
+      <script src="https://cdn.plot.ly/plotly-2.16.1.min.js"></script>
       <title>Graphs</title>
   </head>
+
   <body>
     <nav class="navbar navbar-dark navbar-expand-sm navbar-light bg-dark">
       <a class="navbar-brand " href="#" style="padding: 10px;">Assignment 3</a>
@@ -26,40 +29,14 @@
     </nav>
 
 
-
-
     <div class="container">
-      <div class="row">
-        <div class="col-2">
-          <div class="form-group">
-            <label for="number">Amplitude</label>
-            <input type="number" class="form-control" id="number" min="0" max="100" value="50">
-            </div>
-        </div>
-      </div>
-        <div class="row">
-            <div class="col-2">
-                <div class="form-group">
-                    <label for="slider"></label>
-                    <input type="range" class="form-control-range" id="slider" min="0" max="100" value="50">
-                </div>
-            </div>
-        </div>
+        <div id="drawGraph"></div>
+        <button id="stop" onclick="stopPlot()">Stop</button>
+        <label for="trace1CheckBox"></label>  <input type="checkbox" id="trace1CheckBox" onclick="hideTrace()" checked>Sinus
+        <label for="trace2CheckBox"></label>  <input type="checkbox" id="trace2CheckBox" onclick="hideTrace()" checked>Cosine
+        <sample-component class="" id="slider" max="100" min="0"></sample-component>
+        <label for="numberInput"></label>  <input class="" type="number" id="numberInput" value=1.0000 min="0" max="100" >
     </div>
-
-
-
-    <script>
-      let slider = document.getElementById("slider");
-      let number = document.getElementById("number");
-      slider.oninput = function() {
-        number.value = this.value;
-      }
-      number.oninput = function() {
-        slider.value = this.value;
-      }
-    </script>
-
 
   </body>
 </html>
