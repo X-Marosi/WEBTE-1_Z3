@@ -28,13 +28,16 @@
       </div>
     </nav>
 
-
+    <div id="drawGraph"></div>
     <div class="container">
-        <div id="drawGraph"></div>
         <button id="stop" onclick="stopPlot()">Stop</button>
         <label for="trace1CheckBox"></label>  <input type="checkbox" id="trace1CheckBox" onclick="hideTrace()" checked>Sinus
         <label for="trace2CheckBox"></label>  <input type="checkbox" id="trace2CheckBox" onclick="hideTrace()" checked>Cosine
-        <sample-component class="" id="slider" max="100" min="0"></sample-component>
+    </div>
+        <div class="myContainer" style="margin-left: 120px; margin-right: 120px">
+            <sample-component class="" id="slider" max="100" min="0"></sample-component>
+        </div>
+    <div class="container">
         <label for="numberInput"></label>  <input class="" type="number" id="numberInput" value=1.0000 min="0" max="100" >
     </div>
 
