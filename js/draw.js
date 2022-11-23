@@ -18,11 +18,6 @@ phpNumbers.addEventListener("message",(event) => {
         Plotly.newPlot(drawGraph, graph,{responsive:true});}
 })
 
-slider.oninput = function() {
-    slider.update();
-    number.value = amplitude;
-}
-
 number.oninput = function() {
     slider.shadowRoot.getElementById("slider").value = number.value;
     slider.update();

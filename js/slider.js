@@ -6,7 +6,7 @@ class SampleComponent extends HTMLElement {
             `<style>
                 .sliderHandle{
                    position:absolute;
-                   top: 544px;
+                   top: 546px;
                    color: rgba(0,0,0,0.7);
                    border:1px solid #797373;
                    min-width:30px;
@@ -28,20 +28,20 @@ class SampleComponent extends HTMLElement {
 
         this.shadowRoot.getElementById('slider').addEventListener("input",event=>this.valueChange(event));
         let thisVal = this;
-        window.addEventListener('resize', function() {thisVal.update();}, true);
-        this.update()
+        window.addEventListener('resize', function() {thisVal.refresh();}, true);
+        this.refresh()
     }
 
     valueChange(event) {
-        this.update();
+        this.refresh();
         amplitude = event.target.value;
     }
 
-    update() {
+    refresh() {
         let slider = this.shadowRoot.querySelector('#slider');
         let sliderValue = this.shadowRoot.querySelector('#sliderValue');
-        let off = slider.offsetWidth / (parseInt(slider.max) - parseInt(slider.min));
-        let px = ((slider.valueAsNumber - parseInt(slider.min)) * off) - (sliderValue.offsetWidth / 2) + 120;
+        let offSet = slider.offsetWidth / (parseInt(slider.max) - parseInt(slider.min));
+        let px = ((slider.valueAsNumber - parseInt(slider.min)) * offSet) - (sliderValue.offsetWidth / 2) + 120;
         sliderValue.innerHTML = "<b>"+slider.value+"</b>";
         sliderValue.parentElement.style.left = px + 'px';
     }
